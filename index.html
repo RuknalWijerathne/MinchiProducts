@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minchi Products - Take Away To Taste</title>
+    <style>
+        :root {
+            --primary-red: #DF0819;
+            --primary-yellow: #FECA31;
+            --primary-green: #24A95A;
+            --dark-text: #333333;
+            --light-text: #FFFFFF;
+            --light-bg: #FFFFFF;    /* Changed from #F8F8F8 to white */
+            --accent-bg: #FFF9E6;   /* New warm light background for sections */
+            --section-padding: 5rem 2rem;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--dark-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--light-bg);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Header and Navigation */
+        header {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-red);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding-bottom: 0.3rem;
+            border-bottom: 2px solid transparent;
+        }
+        
+        nav a:hover {
+            color: var(--primary-red);
+            border-bottom: 2px solid var(--primary-yellow);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100vh;
+            background-color: var(--light-bg);
+            z-index: 999;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .mobile-nav.active {
+            left: 0;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            text-align: center;
+        }
+        
+        .mobile-nav ul li {
+            margin-bottom: 2rem;
+        }
+        
+        .mobile-nav a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--dark-text);
+        }
+        
+        .mobile-nav a:hover {
+            color: var(--primary-red);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+
+            /* 🔍 Image path updated here */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                              url('Gemini_Generated_Image_vjxwpfvjxwpfvjxw.jpg');
+
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            max-width: 600px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-yellow);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--primary-red);
+            color: white;
+            font-weight: bold;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-yellow);
+            color: var(--dark-text);
+            transform: translateY(-3px);
+        }
+        
+        /* Scroll Down Indicator */
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+            color: white;
+            text-align: center;
+        }
+        
+        .scroll-down i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+        
+        /* About Section - Changed background to white */
+        .about {
+            padding: var(--section-padding);
+            text-align: center;
+            background-color: var(--light-bg);
+        }
+        
+        .section-title {
+            position: relative;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-red);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: var(--section-padding);
+            background-color: var(--accent-bg);  /* Changed to warm light background */
+        }
+        
+        .products-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active {
+            background-color: var(--primary-red);
+            color: white;
+        }
+        
+        .category-btn:hover:not(.active) {
+            color: var(--primary-red);
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;  /* Slightly increased radius */
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.7rem;
+        }
+        
+        .product-info p {
+            color: #555;  /* Darker gray for better readability */
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .product-btn {
+            font-size: 0.9rem;
+            padding: 0.4rem 1rem;
+            background-color: var(--primary-yellow);
+            color: var(--dark-text);
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .product-btn:hover {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        /* Quick Order Button */
+        .quick-order {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: var(--section-padding);
+            background-color: var(--light-bg);  /* Changed to white */
+            text-align: center;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 2.5rem 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);  /* Lighter shadow */
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;  /* Light border for definition */
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+        
+        .feature-icon {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 80px;
+            height: 80px;
+            background-color: rgba(223, 8, 25, 0.1);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-icon img {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+        }
+        
+        .feature-card p {
+            color: #555;  /* Darker for better readability */
+            font-size: 1rem;
+        }
+        
+        /* Testimonial Section */
+        .testimonials {
+            padding: var(--section-padding);
+            background-color: var(--accent-bg);  /* Changed to warm light background */
+            text-align: center;
+        }
+        
+        .testimonial-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2.5rem;
+            background-color: var(--light-bg);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            border: 1px solid #f0f0f0;
+            position: relative;
+        }
+        
+        .testimonial {
+            padding: 1rem;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            position: relative;
+        }
+        
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--primary-red);
+            opacity: 0.3;
+            position: absolute;
+        }
+        
+        .testimonial-text::before {
+            top: -20px;
+            left: -15px;
+        }
+        
+        .testimonial-text::after {
+            bottom: -40px;
+            right: -15px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-red);
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--primary-red);
+            transform: scale(1.2);
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: var(--section-padding);
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1920/1080');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta h2 span {
+            color: var(--primary-yellow);
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: var(--section-padding);
+            background-color: var(--light-bg);  /* Changed to white */
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-red);
+        }
+        
+        .contact-details {
+            margin-bottom: 2rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            margin-right: 1rem;
+            min-width: 24px;
+        }
+        
+        .contact-text {
+            line-height: 1.6;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0f0f0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0e0e0;  /* Lighter border */
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-yellow);
+            box-shadow: 0 0 0 2px rgba(254, 202, 49, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Google Map */
+        .map-container {
+            margin-top: 3rem;
+            border-radius: 12px;
+            overflow: hidden;
+            height: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-yellow);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-red);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary-yellow);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-red);
+        }
+        
+        .newsletter-form {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 4px 0 0 4px;
+        }
+        
+        .newsletter-btn {
+            background-color: var(--primary-red);
+            color: white;
+            border: none;
+            padding: 0 1rem;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background-color: var(--primary-yellow);
+            color: var(--dark-text);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid #444;
+            color: #999;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background-color: var(--primary-yellow);
+            color: var(--dark-text);
+        }
+        
+        /* Gradient overlay for brand colors */
+        .brand-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary-red), var(--primary-yellow), var(--primary-green));
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 1rem;
+        }
+        
+        .language-btn {
+            background: none;
+            border: none;
+            color: var(--dark-text);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .language-options {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            padding: 0.5rem 0;
+            min-width: 120px;
+            display: none;
+            z-index: 100;
+        }
+        
+        .language-options.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .language-option:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* Cookie Consent */
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0,0,0,0.9);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .cookie-consent.show {
+            display: flex;
+        }
+        
+        .cookie-text {
+            max-width: 800px;
+            margin-right: 1rem;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .cookie-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+        }
+        
+        .accept-cookies {
+            background-color: var(--primary-green);
+            color: white;
+        }
+        
+        .reject-cookies {
+            background-color: #777;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .header-container {
+                padding: 1rem 2rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .about-content,
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .cookie-consent {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .cookie-buttons {
+                margin-top: 1rem;
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Minchi Products</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#features">Why Choose Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            </div>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+        <div class="brand-overlay"></div>
+    </header>
+    
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav">
+        <button class="close-btn">✕</button>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#features">Why Choose Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Experience the Authentic Taste of <span>Sri Lankan Murukku</span></h1>
+            <p>Discover our range of delicious, crispy, and traditional bite products made with premium ingredients and authentic recipes.</p>
+            <a href="#products" class="btn">Explore Products</a>
+        </div>
+        
+    </section>
+    
+    <section id="about" class="about">
+        <h2 class="section-title">Our Story</h2>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="Gemini_Generated_Image_ow57nfow57nfow57.jpg" alt="Minchi Products Family Business">
+            </div>
+            <div class="about-text">
+                <h3>A Tradition of Quality and Taste</h3>
+                <p>Minchi Products is a family-owned business located in the historic city of Polonnaruwa, Sri Lanka. Our journey began with a passion for preserving the authentic taste of traditional Sri Lankan snacks, ensuring that the rich culinary heritage continues to be enjoyed by future generations.</p>
+                <p>We specialize in creating authentic Sri Lankan Murukku and bite products using traditional recipes and methods that have been passed down through generations. Each product we create is made with care, using only the finest locally-sourced ingredients.</p>
+                <p>At Minchi Products, quality is our priority. Each batch is carefully crafted to ensure the perfect texture, flavor, and crispiness that makes our products stand out in the market.</p>
+                <a href="#products" class="btn">Discover Our Products</a>
+            </div>
+        </div>
+    </section>
+    <section id="products" class="products">
+        <div class="products-header">
+            <h2 class="section-title">Our Products</h2>
+            <p>Explore our range of authentic Sri Lankan snacks made with premium ingredients</p>
+        </div>
+      
+        <div class="product-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="ChannaMasala_MobileHero_2400x2400_b08587bb-cd0b-4ee1-a045-0d55a4bd7e6e_600x.webp" alt="Traditional Murukku">
+                </div>
+                <div class="product-info">
+                    <h3>Traditional Murukku</h3>
+                    <p>Our signature crispy snack, made with rice flour and authentic spices.</p>
+                    <div class="price">
+                        <span>Rs. 250.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="3BMadras_MobileHero_2400x2400_5113f2d3-3953-42fe-9290-9f94714fb4a6_600x.webp" alt="Spicy Murukku">
+                </div>
+                <div class="product-info">
+                    <h3>Spicy Murukku</h3>
+                    <p>Extra spicy version with a perfect blend of chili and pepper.</p>
+                    <div class="price">
+                        <span>Rs. 275.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="BasmatiRice_MobileHero_2400x2400_8499166d-c1da-4d6d-a278-d1cc92ba1b2d_600x.webp" alt="Coconut Murukku">
+                </div>
+                <div class="product-info">
+                    <h3>Coconut Murukku</h3>
+                    <p>Infused with fresh coconut for a uniquely Sri Lankan flavor.</p>
+                    <div class="price">
+                        <span>Rs. 300.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="BrownRice_MobileHero_2400x2400_c9defac2-ca9c-4583-869b-373e3a77545b_600x.webp" alt="Special Mixture">
+                </div>
+                <div class="product-info">
+                    <h3>Special Mixture</h3>
+                    <p>A delicious mix of various crunchy bites perfect for parties.</p>
+                    <div class="price">
+                        <span>Rs. 350.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="JasmineRice_MobileHero_2400x2400_5e7edfb1-33c4-4a49-9c65-d4448fb67ba0_600x.webp" alt="Festive Murukku">
+                </div>
+                <div class="product-info">
+                    <h3>Festive Murukku</h3>
+                    <p>Special flavor made for celebrations and festive occasions.</p>
+                    <div class="price">
+                        <span>Rs. 325.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="OrgSticky_MobileHero_2400x2400_b47dcdd9-0ef0-4d92-a211-41cc552e53d6_600x.webp" alt="Garlic Murukku">
+                </div>
+                <div class="product-info">
+                    <h3>Garlic Murukku</h3>
+                    <p>Flavored with fresh garlic for a savory taste experience.</p>
+                    <div class="price">
+                        <span>Rs. 275.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quick-order">
+            <a href="#contact" class="btn">Quick Order Now</a>
+        </div>
+    </section>
+    
+    <section id="features" class="features">
+        <h2 class="section-title">Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='80px' height='80px'%3e%3cpath d='M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z'/%3e%3c/svg%3e" alt="Quality Icon">
+                </div>
+                <h3>Premium Quality</h3>
+                <p>We use only the finest ingredients sourced locally from trusted farmers to ensure exceptional taste and quality.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">
+                     <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor' width='80px' height='80px'%3e%3cpath d='M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm-1 16V10H6.5L11 5.5 15.5 10H13v8h-2z'/%3e%3c/svg%3e" alt="Packaging Icon">
+                </div>
+                <h3>Hygienic Packaging</h3>
+                <p>All products are packaged in food-grade materials to ensure freshness and longer shelf life.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                     <img src="data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' height='80px' viewBox='0 0 24 24' width='80px' fill='currentColor'%3e%3cpath d='M0 0h24v24H0z' fill='none'/%3e%3cpath d='M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 0c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-5h-4v-4h4v4z'/%3e%3c/svg%3e" alt="Delivery Icon">
+                </div>
+                <h3>Island-wide Delivery</h3>
+                <p>We deliver our products to your doorstep anywhere in Sri Lanka within 3-5 business days.</p>
+            </div>
+        </div>
+    </section>
+    </section>
+    <section class="testimonials">
+        <h2 class="section-title">What Our Customers Say</h2>
+        <div class="testimonial-slider">
+            <div class="testimonial">
+                <div class="testimonial-text">
+                    Minchi Products brings back childhood memories with their authentic murukku. The taste is exactly how I remember it from my grandmother's kitchen. I'm a regular customer now!
+                </div>
+                <div class="testimonial-author">Kumari Perera</div>
+                <div class="testimonial-role">Colombo</div>
+            </div>
+            <div class="slider-nav">
+                <div class="slider-dot active"></div>
+                <div class="slider-dot"></div>
+                <div class="slider-dot"></div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="cta">
+        <h2>Experience the <span>Authentic Taste</span> of Sri Lanka</h2>
+        <p>Treat yourself to the crispy, flavorful traditional snacks that have delighted Sri Lankans for generations.</p>
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+    
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            125/3,<br>
+                            First Floor,<br>
+                            Athumalpitiya,<br>
+                            Polonnaruwa,<br>
+                            Sri Lanka
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            +94 71 2123601<br>
+                            +94 714 421128
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div class="contact-text">
+                            minchimnm10@gmail.com<br>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-text">
+                            Monday - Sunday: 8am - 5pm<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+        
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3951.2610061442792!2d80.99548727448996!3d7.971954804639819!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3afb436ca019d4d3%3A0x1554ea16cb734a20!2sMinchi%20Products!5e0!3m2!1sen!2slk!4v1743994266648!5m2!1sen!2slk" width="1450" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    width="100%" 
+    height="450" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+</iframe>
+
+<br>
+<br>
+<br>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>Minchi Products</h4>
+                <p>Bringing authentic Sri Lankan Murukku and traditional snacks to your home since 2010.</p>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">f</a>
+                    <a href="#" class="social-icon">t</a>
+                    <a href="#" class="social-icon">ig</a>
+                    <a href="#" class="social-icon">yt</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#features">Why Choose Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Shipping & Delivery</a></li>
+                    <li><a href="#">Returns & Refunds</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Subscribe to Newsletter</h4>
+                <p>Get updates about new products, promotions, and seasonal offers.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Your Email" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-btn">→</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Minchi Products. All Rights Reserved.</p>
+        </div>
+    </footer>
+    
+    <a href="#" class="back-to-top">↑</a>
+    
+    <div class="cookie-consent">
+        <div class="cookie-text">
+            <p>We use cookies to ensure you get the best experience on our website. By continuing to browse, you agree to our use of cookies.</p>
+        </div>
+        <div class="cookie-buttons">
+            <button class="cookie-btn accept-cookies">Accept</button>
+            <button class="cookie-btn reject-cookies">Reject</button>
+        </div>
+    </div>
+    
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const closeBtn = document.querySelector('.close-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+        });
+        
+        closeBtn.addEventListener('click', () => {
+            mobileNav.classList.remove('active');
+        });
+        
+        // Close mobile menu when clicking a nav link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopBtn = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = document.querySelector('header').offsetHeight;
+                    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            } else {
+                header.style.boxShadow = 'none';
+                header.style.background = 'white';
+            }
+        });
+        
+        // Product Category Tabs
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(b => b.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                // Here you would filter products based on category
+                // This is just a placeholder functionality
+                const category = btn.textContent;
+                console.log(`Filtering by category: ${category}`);
+                // In a real implementation, you would show/hide products based on category
+            });
+        });
+        
+        // Testimonial Slider
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                // Remove active class from all dots
+                sliderDots.forEach(d => d.classList.remove('active'));
+                // Add active class to clicked dot
+                dot.classList.add('active');
+                
+                // Here you would change the testimonial shown
+                console.log(`Showing testimonial ${index + 1}`);
+                // In a real implementation, you would change the displayed testimonial
+            });
+        });
+        
+        // Language Selector
+        const languageBtn = document.querySelector('.language-btn');
+        const languageOptions = document.querySelector('.language-options');
+        
+        languageBtn.addEventListener('click', () => {
+            languageOptions.classList.toggle('show');
+        });
+        
+        // Close language options when clicking elsewhere
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.language-selector')) {
+                languageOptions.classList.remove('show');
+            }
+        });
+        
+        // Language Selection
+        const languageOpts = document.querySelectorAll('.language-option');
+        
+        languageOpts.forEach(opt => {
+            opt.addEventListener('click', () => {
+                const language = opt.textContent;
+                languageBtn.textContent = language.slice(0, 2) + ' ▼';
+                languageOptions.classList.remove('show');
+                
+                // Here you would implement language change functionality
+                console.log(`Changing language to: ${language}`);
+                // In a real implementation, you would switch the website language
+            });
+        });
+        
+        // Cookie Consent
+        const cookieConsent = document.querySelector('.cookie-consent');
+        const acceptCookiesBtn = document.querySelector('.accept-cookies');
+        const rejectCookiesBtn = document.querySelector('.reject-cookies');
+        
+        // Show cookie consent if not already accepted
+        if (!localStorage.getItem('cookiesAccepted')) {
+            setTimeout(() => {
+                cookieConsent.classList.add('show');
+            }, 2000);
+        }
+        
+        acceptCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieConsent.classList.remove('show');
+            
+            // Here you would enable cookies/tracking
+            console.log('Cookies accepted');
+        });
+        
+        rejectCookiesBtn.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'false');
+            cookieConsent.classList.remove('show');
+            
+            // Here you would disable cookies/tracking
+            console.log('Cookies rejected');
+        });
+    </script>
+</body>
+</html>
