@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minchi Products</title>
+    <title>Minchi Products - Take Away To Taste</title>
     <style>
         :root {
             --primary-red: #DF0819;
@@ -467,87 +467,102 @@
             font-size: 1rem;
         }
         
-        /* Testimonial Section */
         .testimonials {
-            padding: var(--section-padding);
-            background-color: var(--accent-bg);  /* Changed to warm light background */
-            text-align: center;
-        }
-        
-        .testimonial-slider {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2.5rem;
-            background-color: var(--light-bg);
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            border: 1px solid #f0f0f0;
-            position: relative;
-        }
-        
-        .testimonial {
-            padding: 1rem;
-        }
-        
-        .testimonial-text {
-            font-size: 1.2rem;
-            font-style: italic;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-            position: relative;
-        }
-        
-        .testimonial-text::before,
-        .testimonial-text::after {
-            content: '"';
-            font-size: 3rem;
-            color: var(--primary-red);
-            opacity: 0.3;
-            position: absolute;
-        }
-        
-        .testimonial-text::before {
-            top: -20px;
-            left: -15px;
-        }
-        
-        .testimonial-text::after {
-            bottom: -40px;
-            right: -15px;
-        }
-        
-        .testimonial-author {
-            font-weight: bold;
-            color: var(--primary-red);
-            font-size: 1.1rem;
-        }
-        
-        .testimonial-role {
-            font-size: 0.9rem;
-            color: #555;
-        }
-        
-        .slider-nav {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        .slider-dot {
-            width: 12px;
-            height: 12px;
-            background-color: #ddd;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .slider-dot.active {
-            background-color: var(--primary-red);
-            transform: scale(1.2);
-        }
-        
+    padding: var(--section-padding);
+    background-color: var(--accent-bg);
+    text-align: center;
+}
+
+.testimonial-slider {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2.5rem;
+    background-color: var(--light-bg);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    border: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.testimonial-container {
+    position: relative;
+    min-height: 200px;
+}
+
+.testimonial {
+    padding: 1rem;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease;
+}
+
+.testimonial.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.testimonial-text {
+    font-size: 1.2rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+    line-height: 1.8;
+    position: relative;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    font-size: 3rem;
+    color: var(--primary-red);
+    opacity: 0.3;
+    position: absolute;
+}
+
+.testimonial-text::before {
+    top: -20px;
+    left: -15px;
+}
+
+.testimonial-text::after {
+    bottom: -40px;
+    right: -15px;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--primary-red);
+    font-size: 1.1rem;
+}
+
+.testimonial-role {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.slider-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.slider-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.slider-dot.active {
+    background-color: var(--primary-red);
+    transform: scale(1.2);
+}
         /* Call to Action */
         .cta {
             padding: var(--section-padding);
@@ -1112,6 +1127,30 @@
                     </div>
                 </div>
             </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="VegTikkaMasala_MobileHero_2400x2400_1bd54199-bf1d-4900-a39b-116bd103cf95_600x.webp">
+                </div>
+                <div class="product-info">
+                    <h3>Traditional Murukku</h3>
+                    <p>Our signature crispy snack, made with rice flour and authentic spices.</p>
+                    <div class="price">
+                        <span>Rs. 250.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="CoconutSquash_MobileHero_2400x2400_ca2d66b9-1df3-480a-b606-c85ff6ed893d_600x.webp">
+                </div>
+                <div class="product-info">
+                    <h3>Traditional Murukku</h3>
+                    <p>Our signature crispy snack, made with rice flour and authentic spices.</p>
+                    <div class="price">
+                        <span>Rs. 250.00</span>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <div class="quick-order">
@@ -1150,23 +1189,70 @@
     <section class="testimonials">
         <h2 class="section-title">What Our Customers Say</h2>
         <div class="testimonial-slider">
-            <div class="testimonial">
-                <div class="testimonial-text">
-                    Minchi Products brings back childhood memories with their authentic murukku. The taste is exactly how I remember it from my grandmother's kitchen. I'm a regular customer now!
+            <div class="testimonial-container">
+                <div class="testimonial" id="testimonial-1">
+                    <div class="testimonial-text">
+                        Minchi Products brings back childhood memories with their authentic murukku. The taste is exactly how I remember it from my grandmother's kitchen. I'm a regular customer now!
+                    </div>
+                    <div class="testimonial-author">Kumari Perera</div>
+                    <div class="testimonial-role">Colombo</div>
                 </div>
-                <div class="testimonial-author">Kumari Perera</div>
-                <div class="testimonial-role">Colombo</div>
+                
+                <div class="testimonial" id="testimonial-2">
+                    <div class="testimonial-text">
+                        I've tried many murukku brands over the years, but nothing compares to Minchi Products. The perfect crunch, authentic spice blend, and consistent quality make it my family's favorite snack for gatherings.
+                    </div>
+                    <div class="testimonial-author">Rajiv Mendis</div>
+                    <div class="testimonial-role">Kandy</div>
+                </div>
+                
+                <div class="testimonial" id="testimonial-3">
+                    <div class="testimonial-text">
+                        As someone who values traditional food made with care, I appreciate how Minchi Products maintains the authentic taste while ensuring modern quality standards. Their murukku is simply the best on the market!
+                    </div>
+                    <div class="testimonial-author">Fathima Aziz</div>
+                    <div class="testimonial-role">Galle</div>
+                </div>
             </div>
+            
             <div class="slider-nav">
-                <div class="slider-dot active"></div>
-                <div class="slider-dot"></div>
-                <div class="slider-dot"></div>
+                <div class="slider-dot active" onclick="showTestimonial(1)"></div>
+                <div class="slider-dot" onclick="showTestimonial(2)"></div>
+                <div class="slider-dot" onclick="showTestimonial(3)"></div>
             </div>
         </div>
     </section>
     
+    <script>
+        function showTestimonial(number) {
+            // Hide all testimonials
+            const testimonials = document.querySelectorAll('.testimonial');
+            testimonials.forEach(testimonial => {
+                testimonial.classList.remove('active');
+            });
+            
+            // Show selected testimonial
+            document.getElementById('testimonial-' + number).classList.add('active');
+            
+            // Update active dot
+            const dots = document.querySelectorAll('.slider-dot');
+            dots.forEach((dot, index) => {
+                if (index === number - 1) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+        
+        // Initialize first testimonial as active
+        document.addEventListener('DOMContentLoaded', function() {
+            showTestimonial(1);
+        });
+    </script>
+    
     <section class="cta">
-        <h2>Experience the <span>Authentic Taste</span> of Sri Lanka</h2>
+        <h2><span>Take Away To Taste !</span></h2>
         <p>Treat yourself to the crispy, flavorful traditional snacks that have delighted Sri Lankans for generations.</p>
         <a href="#products" class="btn">Shop Now</a>
     </section>
